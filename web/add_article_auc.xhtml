@@ -1,0 +1,135 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <h:head>
+        <title>Add article</title>
+        <h:outputStylesheet library="css" name="logged.css"  />
+    </h:head>
+    <h:body>
+        <h:outputScript library="holder" name="holder.js" />
+        <!--script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.5.2/holder.min.js"></script-->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.xhtml">Welcome #{loginBean.user.first_name}</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                    <li>
+                        <a href="add_article.xhtml">Add Article</a>
+                    </li>
+                    <li>
+                        <a href="add_article_auc.xhtml">Add Auction Article</a>
+                    </li>
+                    <li>
+                        <a href="show_transactions.xhtml">Show my transactions</a>
+                    </li>
+                   
+                </ul>
+                   
+                <ul class="nav navbar-nav navbar-right">
+      <li><a href="login.xhtml"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+      
+    </ul>  
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+        <b:container>
+        <h:form  id="f" enctype="multipart/form-data">
+         <fieldset>
+             <legend>Add article</legend>
+                
+	        <b:inputText id="name" placeholder="Name"  value="#{articleBean.article_auc.name}" required="true">
+                    <f:facet name="prepend">
+                        <b:icon name="user" />
+                    </f:facet>
+                </b:inputText>
+ 	     
+	        <br />
+                <b:inputText id="price" placeholder="Price"  value="#{articleBean.article_auc.price}" required="true">
+                    <f:facet name="prepend">
+                        <b:icon name="user" />
+                    </f:facet>
+                </b:inputText>
+                
+	        <h:message  for="price" errorClass="erreur" />
+	        <br />
+                <b:inputText id="quantity" placeholder="Quantity"  value="#{articleBean.article_auc.quantity}" required="true">
+                    <f:facet name="prepend">
+                        <b:icon name="user" />
+                    </f:facet>
+                </b:inputText>
+	        <h:message  for="quantity" errorClass="erreur" />
+	        <br />
+                <b:inputText id="condition" placeholder="Condition"  value="#{articleBean.article_auc.condition}" required="true">
+                    <f:facet name="prepend">
+                        <b:icon name="user" />
+                    </f:facet>
+                </b:inputText>
+	        <h:message  for="email" errorClass="erreur" />
+	        <br />
+                
+                <h:outputLabel for="condition"> shipping <span class="requis">*</span></h:outputLabel>
+                <h:selectBooleanCheckbox value="#{articleBean.article_auc.shipping}" /> 
+	        <br />
+                <b:inputText id="brand" placeholder="Brand"  value="#{articleBean.article_auc.brand}" required="true">
+                    <f:facet name="prepend">
+                        <b:icon name="user" />
+                    </f:facet>
+                </b:inputText>
+	        <h:message  for="brand" errorClass="erreur" />
+	        <br />
+                <b:inputText id="description" placeholder="Description"  value="#{articleBean.article_auc.description}" required="true">
+                    <f:facet name="prepend">
+                        <b:icon name="user" />
+                    </f:facet>
+                </b:inputText>
+	        <br />
+                <b:inputText id="date_limit" placeholder="Date_limit"  value="#{articleBean.article_auc.date_limit}" required="true">
+                    <f:facet name="prepend">
+                        <b:icon name="user" />
+                    </f:facet>
+                    <f:convertDateTime pattern="yyyy-MM-dd"/>  
+                </b:inputText><h:message  for="email" errorClass="erreur" />
+	        <br />
+                
+                <p:selectOneMenu value="#{categoryBean.category.name}" onchange="submit()"
+                                 valueChangeListener="#{articleBean.set_cat}" >
+                    <f:selectItems value="#{categoryBean.categories}" var="cat"
+                   itemLabel="#{cat.name}" itemValue="#{cat.name}" />
+                </p:selectOneMenu>
+                <br/><b/>
+                <h:inputFile value="#{articleBean.image}">
+                    <f:passThroughAttribute name ="accept" value="image/*"/>
+                </h:inputFile>   <br/> 
+                <h:commandButton value="add article" action="#{articleBean.add_article_auc}" styleClass="sansLabel" >
+                    <f:ajax execute="@form" render="@form"/>
+                    
+                </h:commandButton>
+	        <br />
+          </fieldset>
+        </h:form> 	
+        </b:container>
+    </h:body>
+
+</html>

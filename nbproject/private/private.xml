@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/home/chawki/NetBeansProjects/Online_shopping/web/show_article_auc.xhtml</file>
+            <file>file:/home/chawki/NetBeansProjects/Online_shopping/src/java/dao/AuctionDao.java</file>
+            <file>file:/home/chawki/NetBeansProjects/Online_shopping/web/resources/img_upload/a.jpg</file>
+            <file>file:/home/chawki/NetBeansProjects/Online_shopping/src/java/beans/Transaction.java</file>
+            <file>file:/home/chawki/NetBeansProjects/Online_shopping/src/java/managedBeans/transactionBean.java</file>
+            <file>file:/home/chawki/NetBeansProjects/Online_shopping/web/index.xhtml</file>
+            <file>file:/home/chawki/NetBeansProjects/Online_shopping/web/show_transactions.xhtml</file>
+            <file>file:/home/chawki/NetBeansProjects/Online_shopping/src/java/beans/Article.java</file>
+            <file>file:/home/chawki/NetBeansProjects/Online_shopping/src/java/managedBeans/subscibeBean.java</file>
+            <file>file:/home/chawki/NetBeansProjects/Online_shopping/web/resources/img_upload/a.jpeg</file>
+            <file>file:/home/chawki/NetBeansProjects/Online_shopping/web/subscription.xhtml</file>
+            <file>file:/home/chawki/NetBeansProjects/Online_shopping/src/java/dao/DAOFactory.java</file>
+            <file>file:/home/chawki/NetBeansProjects/Online_shopping/src/java/dao/DAOException.java</file>
+            <file>file:/home/chawki/NetBeansProjects/Online_shopping/src/java/managedBeans/auctionBean.java</file>
+            <file>file:/home/chawki/NetBeansProjects/Online_shopping/src/java/managedBeans/ArticleBean.java</file>
+            <file>file:/home/chawki/NetBeansProjects/Online_shopping/web/resources/img_upload/Screenshot%20at%202017-04-08%2013-10-02.png</file>
+            <file>file:/home/chawki/NetBeansProjects/Online_shopping/src/java/beans/User.java</file>
+            <file>file:/home/chawki/NetBeansProjects/Online_shopping/src/java/filters/AuthorizationFilter.java</file>
+            <file>file:/home/chawki/NetBeansProjects/Online_shopping/web/login.xhtml</file>
+            <file>file:/home/chawki/NetBeansProjects/Online_shopping/src/java/beans/Auction.java</file>
+            <file>file:/home/chawki/NetBeansProjects/Online_shopping/web/resources/css/bootstrap.css</file>
+            <file>file:/home/chawki/NetBeansProjects/Online_shopping/src/java/services/CookieHelper.java</file>
+            <file>file:/home/chawki/NetBeansProjects/Online_shopping/src/java/dao/CategoryDao.java</file>
+            <file>file:/home/chawki/NetBeansProjects/Online_shopping/src/java/dao/TransactionDao.java</file>
+            <file>file:/home/chawki/NetBeansProjects/Online_shopping/web/resources/index.html</file>
+            <file>file:/home/chawki/NetBeansProjects/Online_shopping/src/java/services/EmailValidator.java</file>
+            <file>file:/home/chawki/NetBeansProjects/Online_shopping/web/add_article.xhtml</file>
+            <file>file:/home/chawki/NetBeansProjects/Online_shopping/src/java/beans/ArticleAuction.java</file>
+            <file>file:/home/chawki/NetBeansProjects/Online_shopping/src/java/dao/ArticleDao.java</file>
+            <file>file:/home/chawki/NetBeansProjects/Online_shopping/web/resources/test.xhtml</file>
+            <file>file:/home/chawki/NetBeansProjects/Online_shopping/web/resources/img_upload/raf,750x1000,075,t,fafafa-ca443f4786.u1.jpg</file>
+            <file>file:/home/chawki/NetBeansProjects/Online_shopping/src/java/managedBeans/categoryBean.java</file>
+            <file>file:/home/chawki/NetBeansProjects/Online_shopping/web/add_article_auc.xhtml</file>
+            <file>file:/home/chawki/NetBeansProjects/Online_shopping/web/resources/template.xhtml</file>
+            <file>file:/home/chawki/NetBeansProjects/Online_shopping/src/java/dao/UserDaoImpl.java</file>
+            <file>file:/home/chawki/NetBeansProjects/Online_shopping/web/WEB-INF/faces-config.xml</file>
+            <file>file:/home/chawki/NetBeansProjects/Online_shopping/src/java/dao/DAOConfigurationException.java</file>
+            <file>file:/home/chawki/NetBeansProjects/Online_shopping/src/java/beans/Category.java</file>
+            <file>file:/home/chawki/NetBeansProjects/Online_shopping/src/java/services/SessionUtils.java</file>
+            <file>file:/home/chawki/NetBeansProjects/Online_shopping/web/show_article.xhtml</file>
+            <file>file:/home/chawki/NetBeansProjects/Online_shopping/src/java/dao/dao.properties</file>
+            <file>file:/home/chawki/NetBeansProjects/Online_shopping/src/java/managedBeans/loginBean.java</file>
+        </group>
+    </open-files>
+</project-private>

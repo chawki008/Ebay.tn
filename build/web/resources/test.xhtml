@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+   
+    <h:body>
+        <ui:composition template="./template.xhtml">
+            
+            <ui:define name="title">
+                Home
+            </ui:define>
+            
+            <ui:define name="left">
+                <b:panel look="primary" title="Options" >
+                    <b:listLinks>
+                        <b:navLink header="Categories" />
+                        <hr/>
+                        
+                        <ui:repeat value="#{categoryBean.categories}"  var="value">
+                            <b:navLink href="./home.xhtml?id= #{value.id}" >
+                                #{value.name}
+                            </b:navLink> 
+                        </ui:repeat>
+                        <b:navLink></b:navLink>
+                        <hr/>
+                        <b:navLink header="Format"/>
+                        <hr/>
+                      
+                    </b:listLinks>
+                   
+                    
+                    
+                </b:panel>
+            </ui:define>
+            
+            <ui:define name="content">
+                <b:panel look="primary" title="Articles" >
+                    <h3>
+                        #{categoryBean.category.name } 
+                       
+                        <b:label text="" severity="info"/>
+                    </h3>
+                    <hr/>
+
+                    <ui:repeat value="#{categoryBean.articles_imm}"  var="article">
+                        
+                        <ui:fragment >
+                            <b:row>
+                            <b:column col-sm="6" col-md="4">
+                                <b:thumbnail>
+                                    <img src="http://placehold.it/350x150" alt="Generic placeholder thumbnail"/>
+                                    <f:facet name="caption">
+                                        <h3>#{articleBean.article.name}</h3>
+                                        <p>#{articleBean.article.owner.name}</p>
+                                        <p>
+                                            <b:button look="primary" value="Button"/>
+                                            <b:button value="Button"/>
+                                        </p>
+                                    </f:facet>
+                                </b:thumbnail>
+                            </b:column> 
+                            </b:row>
+                        </ui:fragment>
+                        
+                    </ui:repeat>
+                </b:panel>
+
+ 
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

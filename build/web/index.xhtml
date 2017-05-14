@@ -1,0 +1,221 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <h:outputStylesheet  library = "css" name="bootstrap.min.css"/>
+        <h:outputStylesheet library = "css" name ="shop-homepage.css"/>
+
+
+    <title>Ebay.tn </title>
+    </h:head>
+    <h:body>
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.xhtml">Welcome #{loginBean.user.first_name}</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                    <li>
+                        <a href="add_article.xhtml">Add Article</a>
+                    </li>
+                    <li>
+                        <a href="add_article_auc.xhtml">Add Auction Article</a>
+                    </li>
+                    <ui:fragment rendered="#{loginBean.isLoggedIn()}"> <li>
+                        <a href="show_transactions.xhtml">Show my transactions</a>
+                    </li>
+                    </ui:fragment>
+                </ul>
+                   
+           <ui:fragment rendered="#{loginBean.isLoggedIn()}">   
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li><b:form>
+                             <span class="glyphicon glyphicon-log-out"></span> 
+                            <b:commandButton look="link" action="#{loginBean.logout()}" value="Logout"/> 
+                        </b:form>
+                     </li>   
+                </ul>  
+                 </ui:fragment>
+                <ui:fragment rendered="#{!loginBean.isLoggedIn()}">   
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li>
+                        <a href ="login.xhtml"> login</a>
+                     </li>   
+                    <li><a href ="login.xhtml"> subscribe</a>   </li>
+                </ul>  
+                 </ui:fragment>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-3">
+                <p class="lead">EBAY.TN</p>
+                <div class="list-group">
+                    <c:forEach items="#{categoryBean.categories}" var="o">
+                        <h:form>
+                        <h:commandLink value = "#{o.name}"> 
+                            <f:ajax event="click" render="panel1" listener="#{categoryBean.update(o.name)}" />
+                        </h:commandLink>
+                        </h:form>
+                   </c:forEach>
+                </div>
+            </div>
+            
+            <div class="col-md-9">
+<h:panelGroup layout="block" id ="panel1">
+    
+                <div class="row carousel-holder">
+
+                    <div class="col-md-12">
+                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                
+                                <div class="item active">
+                                    <img class="slide-image" src="#{categoryBean.articles.get(0).img_extension}" alt="" height="300" width="800"/>
+                                </div>
+                                    <ui:repeat var="o" value="#{categoryBean.articles}" varStatus="status">
+                                
+                                <div class="item">
+                                    <img class="slide-image" src="#{o.img_extension}" alt=""/>
+                                </div>
+                                
+                                </ui:repeat>
+                            </div>
+                            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left"></span>
+                            </a>
+                            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+    
+                <div class="row">
+                    <ui:repeat var="o" value="#{categoryBean.articles_imm}" varStatus="status">
+                    <div class="col-sm-4 col-lg-4 col-md-4">
+                        <div class="thumbnail">
+                            <img src="#{o.img_extension}" alt="" height="150" width="320"/>
+                            <div class="caption">
+                                <h4 class="pull-right">#{o.price}$</h4>
+                                <h4><h:form><h:commandLink value="#{o.name}" action="#{articleBean.show_article()}" >
+                                        <f:param name="art_name" value="#{o.name}"/>
+                                    </h:commandLink>
+                                        </h:form>    
+                                </h4>
+                                <p>#{o.description}</p>
+                            </div>
+                            <div class="ratings">
+                                <p class="pull-right">15 reviews</p>
+                                <p>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+ </ui:repeat>
+                    </div>
+    <br/>
+                  <h2>Articles on auction :</h2>
+<br/>                                
+    <div class="row">
+
+
+                        <ui:repeat var="o" value="#{categoryBean.articles_auc}" varStatus="status">
+                    <div class="col-sm-4 col-lg-4 col-md-4">
+                        <div class="thumbnail">
+                            <img src="#{o.img_extension}" alt="" height="150" width="320"/>
+                            <div class="caption">
+                                <h4 class="pull-right">#{o.price}$</h4>
+                                <h4><h:form><h:commandLink value="#{o.name}" action="#{articleBean.show_article()}">
+                                        <f:param name="art_name" value="#{o.name}"/>
+                                    </h:commandLink>
+                                        </h:form>    
+                                </h4>
+                                <p>#{o.description}</p>
+                            </div>
+                            <div class="ratings">
+                                <p class="pull-right">15 reviews</p>
+                                <p>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+ </ui:repeat>
+                    </div>
+                        
+                        </h:panelGroup>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- /.container -->
+
+    <div class="container">
+
+       
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Your Website 2014</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <h:outputScript library = "js" name ="jquery.js"/>
+    <h:outputScript library = "js" name ="bootstrap.min.js"/>
+    
+    
+    </h:body>
+</html>
+

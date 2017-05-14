@@ -1,0 +1,168 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <h:head>
+        <h:outputStylesheet  library = "css" name="bootstrap.min.css"/>
+        <h:outputStylesheet library = "css" name ="shop-homepage.css"/>
+
+
+    <title>Ebay.tn </title>
+    </h:head>
+
+    <h:body>
+       <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.xhtml">Welcome #{loginBean.user.first_name}</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                    <li>
+                        <a href="add_article.xhtml">Add Article</a>
+                    </li>
+                    <li>
+                        <a href="add_article_auc.xhtml">Add Auction Article</a>
+                    </li>
+                     <ui:fragment rendered="#{loginBean.isLoggedIn()}">
+                    <li>
+                        <a href="show_transactions.xhtml">Show my transactions</a>
+                    </li>
+                     </ui:fragment>
+                </ul>
+                 <ui:fragment rendered="#{loginBean.isLoggedIn()}">   
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li><b:form>
+                             <span class="glyphicon glyphicon-log-out"></span> 
+                            <b:commandButton look="link" action="#{loginBean.logout()}" value="Logout"/> 
+                        </b:form>
+                     </li>   
+                </ul>  
+                 </ui:fragment>
+                <ui:fragment rendered="#{!loginBean.isLoggedIn()}">   
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li>
+                        <a href ="login.xhtml"> login</a>
+                         </li>   
+                    <li><a href ="login.xhtml"> subscribe</a> 
+                     </li>   
+                </ul>  
+                 </ui:fragment>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-3">
+                <p class="lead">EBAY.TN</p>
+                <div class="list-group">
+                    <a href="#" class="list-group-item active">#{articleBean.article_auc.category.name}</a>
+                    
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <h:panelGroup layout="block" id ="panel1">
+                <div class="thumbnail">
+                    <img class="img-responsive" src="#{articleBean.article_auc.img_extension}" alt=""/>
+                    <div class="caption-full">
+                        <h4 class="pull-right">$24.99</h4>
+                        <h4><a href="#">#{articleBean.article_auc.name}</a>
+                        </h4>
+                        <p><strong>description : </strong>#{articleBean.article_auc.description}</p>
+                        <p><strong>Brand : </strong>#{articleBean.article_auc.brand}</p>
+                        <p><strong>Owner : </strong><i>#{articleBean.article_auc.owner.first_name}</i></p>
+                        <p><strong>Owner email  : </strong><i>#{articleBean.article_auc.owner.email}</i></p>
+                         <p><strong>Biggest Bet : </strong><i>#{articleBean.article_auc.final_auction}</i></p>
+                        <p><strong>Date limit : </strong><i>#{articleBean.article_auc.date_limit}</i></p>
+                    </div>
+                    <div class="ratings">
+                        <p class="pull-right">3 reviews</p>
+                        <p>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star-empty"></span>
+                            4.0 stars
+                        </p>
+                    </div>
+                </div>
+                    </h:panelGroup>
+                <div class="well">
+
+                    <div class="text-left">
+                        <h:form>
+                            <p:outputLabel value="Amount"/>
+                            <p:inputText value="#{auctionBean.auction.amount}" />
+                            <p:commandButton class="btn btn-success" value="Add auction" action="#{auctionBean.add_auction}" styleClass="sansLabel" update=":panel1"  >
+                            <f:param name = "article" value = "#{articleBean.article_auc.name}" />  
+                            <f:actionListener binding="#{articleBean.update()}" />
+                            </p:commandButton>
+                    </h:form>
+                        
+                    </div>
+
+                </div>
+                    
+
+                    
+
+                  
+
+                    
+
+                   
+            </div>
+
+        </div>
+
+    </div>
+    <!-- /.container -->
+
+    <div class="container">
+
+       
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Your Website 2014</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>          
+    
+                    
+                   
+                    
+                    
+    </h:body>
+
+</html>

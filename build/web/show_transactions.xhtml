@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <h:head>
+        <h:outputStylesheet  library = "css" name="bootstrap.min.css"/>
+        <h:outputStylesheet library = "css" name ="shop-homepage.css"/>
+
+
+    <title>Ebay.tn </title>
+    </h:head>
+
+    <h:body>
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.xhtml">Welcome #{loginBean.user.first_name}</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                    <li>
+                        <a href="add_article.xhtml">Add Article</a>
+                    </li>
+                    <li>
+                        <a href="add_article_auc.xhtml">Add Auction Article</a>
+                    </li>
+                    <li>
+                        <a href="show_transactions.xhtml">Show my transactions</a>
+                    </li>
+                   
+                </ul>
+                   
+               <ul class="nav navbar-nav navbar-right">
+                    
+                    <li><b:form>
+                             <span class="glyphicon glyphicon-log-out"></span> 
+                            <b:commandButton look="link" action="#{loginBean.logout()}" value="Logout"/> 
+                        </b:form>
+                     </li>   
+                </ul>    
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-3">
+                <p class="lead">EBAY.TN</p>
+                <div class="list-group">
+                    
+                    
+                </div>
+            </div>
+
+            <div class="col-md-9">
+            
+                <p:dataTable value = "#{transactionBean.transactions}" var ="transaction">
+                <f:facet name="header">Transactions</f:facet>
+                <p:column>    	
+                    <f:facet name = "header">Buyer </f:facet>
+                    <h:outputText value="#{transaction.buyer.first_name} "/>
+                    <h:outputText value="#{transaction.buyer.last_name}"/>
+                </p:column>
+                <p:column>    	
+                    <f:facet name = "header">Article name</f:facet>
+                    <h:outputText value="#{transaction.article.name}"/>
+                </p:column>
+                <p:column>    	
+                    <f:facet name = "header">Quantity</f:facet>
+                    <h:outputText value="#{transaction.quantity}"/>
+                </p:column>
+                <p:column>    	
+                    <f:facet name = "header">Owner</f:facet>
+                    <h:outputText value="#{transaction.article.owner.first_name} "/>
+                    <h:outputText value="#{transaction.article.owner.last_name}"/>
+                
+                </p:column>
+                <p:column>    	
+                    <f:facet name = "header">Date</f:facet>
+                    <h:outputText value="#{transaction.date}"/>
+                </p:column>
+                </p:dataTable>
+                <br/><br/>
+                </div>
+
+               
+                    
+
+                    
+
+                  
+
+                    
+
+                   
+            </div>
+
+        </div>
+    <!-- /.container -->
+
+    <div class="container">
+
+       
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Your Website 2014</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>          
+    
+                    
+                   
+                    
+                    
+    </h:body>
+
+</html>
